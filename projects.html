@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects | Mohamed Kourouma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .proj-intro {
+      font-size: .85rem; color: var(--muted);
+      font-family: var(--mono); letter-spacing: .06em; margin-bottom: 28px;
+    }
+    .proj-intro span { color: var(--amber); }
+
+    .proj-list { display: flex; flex-direction: column; gap: 3px; }
+
+    /* ── Each project item ── */
+    .proj-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden;
+      transition: border-color .3s;
+    }
+    .proj-item:hover { border-color: rgba(245,158,11,.3); }
+    .proj-item.open  { border-color: rgba(245,158,11,.55); }
+
+    /* Clickable bar */
+    .proj-bar {
+      display: flex; align-items: center;
+      padding: 0 22px; height: 64px;
+      cursor: pointer; gap: 14px;
+      transition: background .25s; user-select: none;
+    }
+    .proj-item:hover .proj-bar,
+    .proj-item.open  .proj-bar { background: var(--bg3); }
+
+    .proj-idx  {
+      font-family: var(--mono); font-size: .57rem;
+      color: var(--muted); letter-spacing: .1em;
+      flex-shrink: 0; width: 26px;
+    }
+    .proj-tname {
+      font-family: var(--sans); font-weight: 700;
+      font-size: .95rem; flex: 1; line-height: 1.2;
+    }
+    .proj-type-tag {
+      font-family: var(--mono); font-size: .57rem;
+      padding: 2px 8px;
+      background: rgba(45,212,191,.08);
+      border: 1px solid rgba(45,212,191,.2);
+      color: var(--teal); border-radius: 20px;
+      letter-spacing: .06em; white-space: nowrap; flex-shrink: 0;
+    }
+    .lang-row { display: flex; gap: 4px; align-items: center; flex-shrink: 0; }
+    .ltag {
+      font-family: var(--mono); font-size: .57rem;
+      padding: 2px 6px;
+      border: 1px solid rgba(245,158,11,.2);
+      color: rgba(245,158,11,.75);
+      border-radius: 20px; white-space: nowrap;
+    }
+    .proj-feat {
+      font-family: var(--mono); font-size: .54rem;
+      padding: 2px 7px;
+      background: rgba(251,113,133,.08);
+      border: 1px solid rgba(251,113,133,.3);
+      color: var(--rose); border-radius: 20px;
+      letter-spacing: .1em; white-space: nowrap; flex-shrink: 0;
+    }
+    .proj-chev {
+      font-size: .7rem; color: var(--muted);
+      transition: transform .38s ease, color .2s;
+      flex-shrink: 0; margin-left: 4px;
+    }
+    .proj-item.open .proj-chev { transform: rotate(180deg); color: var(--amber); }
+
+    /* Expanding body */
+    .proj-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height .42s cubic-bezier(.23,1,.32,1);
+    }
+    .proj-item.open .proj-body { max-height: 320px; }
+
+    .proj-content {
+      padding: 18px 22px 22px 52px;
+      border-top: 1px solid var(--border);
+    }
+    .proj-desc {
+      font-size: .88rem; color: rgba(232,230,240,.72);
+      line-height: 1.75; margin-bottom: 14px; max-width: 680px;
+    }
+    .proj-footer {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .ptag {
+      font-family: var(--mono); font-size: .57rem;
+      padding: 2px 7px;
+      border: 1px solid var(--border);
+      color: rgba(232,230,240,.5);
+      border-radius: var(--r);
+    }
+    .proj-gh {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: .63rem;
+      color: var(--amber); text-decoration: none;
+      letter-spacing: .08em; text-transform: uppercase;
+      border: 1px solid rgba(245,158,11,.3);
+      padding: 5px 13px; border-radius: var(--r);
+      transition: background .2s, color .2s;
+    }
+    .proj-gh:hover { background: rgba(245,158,11,.1); color: var(--amber2); }
+
+    @media (max-width: 800px) {
+      .lang-row, .proj-type-tag { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="topnav">
+    <a class="nav-logo" href="index.html">Mohamed Kourouma <span>// portfolio</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="experience.html">Experience</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page-content">
+    <div class="page-wrap">
+
+      <div class="pg-label">Projects</div>
+      <h1 class="pg-title">What I've <em>Built</em></h1>
+      <p class="proj-intro"><span>▸ Click any bar</span> to expand it. GitHub link is at the bottom of each.</p>
+
+      <div class="proj-list">
+
+        <!-- 01 -->
+        <div class="proj-item" id="p1">
+          <div class="proj-bar" onclick="toggleP('p1')">
+            <span class="proj-idx">01</span>
+            <span class="proj-tname">Real-Time Aircraft Tracking System</span>
+            <span class="proj-feat">Featured</span>
+            <span class="proj-type-tag">Full Stack</span>
+            <div class="lang-row"><span class="ltag">Python</span><span class="ltag">RTL-SDR</span><span class="ltag">Leaflet</span></div>
+            <span class="proj-chev">▾</span>
+          </div>
+          <div class="proj-body">
+            <div class="proj-content">
+              <p class="proj-desc">Built a real-time aircraft monitoring system using an RTL-SDR receiver and a 1090 MHz antenna to capture ADS-B transmissions from overhead planes. A Python pipeline (dump1090) decodes, filters, and stores live telemetry — position, altitude, speed, and identification — into a SQLite database, with ~65% of messages carrying valid positional data and updates every 1–2 seconds. Data is served to an interactive Leaflet map with live tracking, historical trip visualization, altitude-colored paths, and unsupervised clustering to detect climb, cruise, and descent phases. An end-to-end project spanning hardware signal capture, real-time data pipelines, and ML — built to understand how systems talk to each other at every layer.</p>
+              <div class="proj-footer">
+                <div class="proj-tags"><span class="ptag">Python</span><span class="ptag">RTL-SDR</span><span class="ptag">SQLite</span><span class="ptag">Leaflet.js</span><span class="ptag">Pandas</span><span class="ptag">FastAPI</span></div>
+                <a href="https://github.com/MohamedK14" target="_blank" class="proj-gh">⌥ GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="proj-item" id="p2">
+          <div class="proj-bar" onclick="toggleP('p2')">
+            <span class="proj-idx">02</span>
+            <span class="proj-tname">AI Language Practice Web App</span>
+            <span class="proj-type-tag">AI / Web</span>
+            <div class="lang-row"><span class="ltag">Flask</span><span class="ltag">JS</span><span class="ltag">spaCy</span></div>
+            <span class="proj-chev">▾</span>
+          </div>
+          <div class="proj-body">
+            <div class="proj-content">
+              <p class="proj-desc">A full-stack web app for practicing multiple languages with real-time AI feedback — built for Intro to AI at UDM. Features a real-time chat interface, spaCy-based grammar detection, and an AI API for multilingual conversation and correction. Flask backend handles REST API calls for efficient, context-aware feedback.</p>
+              <div class="proj-footer">
+                <div class="proj-tags"><span class="ptag">HTML/CSS/JS</span><span class="ptag">Python</span><span class="ptag">Flask</span><span class="ptag">spaCy</span><span class="ptag">NLP</span><span class="ptag">REST API</span></div>
+                <a href="https://github.com/MohamedK14" target="_blank" class="proj-gh">⌥ GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="proj-item" id="p3">
+          <div class="proj-bar" onclick="toggleP('p3')">
+            <span class="proj-idx">03</span>
+            <span class="proj-tname">Connect Four — Minimax + Alpha-Beta Pruning</span>
+            <span class="proj-type-tag">AI / Game</span>
+            <div class="lang-row"><span class="ltag">C++</span><span class="ltag">AI</span></div>
+            <span class="proj-chev">▾</span>
+          </div>
+          <div class="proj-body">
+            <div class="proj-content">
+              <p class="proj-desc">Two-player Connect Four with an unbeatable AI opponent. Implemented the Minimax algorithm with Alpha-Beta Pruning — dramatically reducing evaluated game states while maintaining optimal decisions. Deepened understanding of adversarial search, evaluation functions, and recursive game trees.</p>
+              <div class="proj-footer">
+                <div class="proj-tags"><span class="ptag">C++</span><span class="ptag">Minimax</span><span class="ptag">Alpha-Beta Pruning</span><span class="ptag">Game Theory</span></div>
+                <a href="https://github.com/MohamedK14" target="_blank" class="proj-gh">⌥ GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="proj-item" id="p4">
+          <div class="proj-bar" onclick="toggleP('p4')">
+            <span class="proj-idx">04</span>
+            <span class="proj-tname">3×3 Sliding Puzzle Solver — A* Algorithm</span>
+            <span class="proj-type-tag">AI / Algorithm</span>
+            <div class="lang-row"><span class="ltag">C++</span><span class="ltag">A*</span></div>
+            <span class="proj-chev">▾</span>
+          </div>
+          <div class="proj-body">
+            <div class="proj-content">
+              <p class="proj-desc">An optimal 8-puzzle solver using A* search with Manhattan distance heuristic. Finds the minimum number of moves from any valid start state to the goal. Demonstrates informed search, priority queues, heuristic design, and state-space representation.</p>
+              <div class="proj-footer">
+                <div class="proj-tags"><span class="ptag">C++</span><span class="ptag">A* Search</span><span class="ptag">Heuristics</span><span class="ptag">Priority Queue</span></div>
+                <a href="https://github.com/MohamedK14" target="_blank" class="proj-gh">⌥ GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="proj-item" id="p5">
+          <div class="proj-bar" onclick="toggleP('p5')">
+            <span class="proj-idx">05</span>
+            <span class="proj-tname">Sudoku Solver — Backtracking &amp; Recursion</span>
+            <span class="proj-type-tag">Algorithm</span>
+            <div class="lang-row"><span class="ltag">C++</span></div>
+            <span class="proj-chev">▾</span>
+          </div>
+          <div class="proj-body">
+            <div class="proj-content">
+              <p class="proj-desc">Solves any valid 9×9 Sudoku puzzle using backtracking and recursion. Fills cells one-by-one and backtracks on constraint violations — a clear illustration of constraint satisfaction and depth-first search.</p>
+              <div class="proj-footer">
+                <div class="proj-tags"><span class="ptag">C++</span><span class="ptag">Backtracking</span><span class="ptag">Recursion</span><span class="ptag">CSP</span></div>
+                <a href="https://github.com/MohamedK14" target="_blank" class="proj-gh">⌥ GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 -->
+        <div class="proj-item" id="p6">
+          <div class="proj-bar" onclick="toggleP('p6')">
+            <span class="proj-idx">06</span>
+            <span class="proj-tname">Sorting Algorithm Benchmark</span>
+            <span class="proj-type-tag">Analysis</span>
+            <div class="lang-row"><span class="ltag">C++</span></div>
+            <span class="proj-chev">▾</span>
+          </div>
+          <div class="proj-body">
+            <div class="proj-content">
+              <p class="proj-desc">Performance analysis of QuickSort, MergeSort, and BubbleSort across sorted, reverse-sorted, and random datasets of varying sizes. Measures real runtimes and best/average/worst-case complexity — visualizing the gap between O(n²) and O(n log n).</p>
+              <div class="proj-footer">
+                <div class="proj-tags"><span class="ptag">C++</span><span class="ptag">QuickSort</span><span class="ptag">MergeSort</span><span class="ptag">BubbleSort</span><span class="ptag">Complexity</span></div>
+                <a href="https://github.com/MohamedK14" target="_blank" class="proj-gh">⌥ GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 07 -->
+        <div class="proj-item" id="p7">
+          <div class="proj-bar" onclick="toggleP('p7')">
+            <span class="proj-idx">07</span>
+            <span class="proj-tname">Banking System Simulation</span>
+            <span class="proj-type-tag">OOP</span>
+            <div class="lang-row"><span class="ltag">C++</span></div>
+            <span class="proj-chev">▾</span>
+          </div>
+          <div class="proj-body">
+            <div class="proj-content">
+              <p class="proj-desc">Console-based banking system demonstrating OOP: inheritance, polymorphism, and encapsulation. Supports account creation, deposits, withdrawals, and transaction history. Built to bridge classroom OOP theory and real-world software design patterns.</p>
+              <div class="proj-footer">
+                <div class="proj-tags"><span class="ptag">C++</span><span class="ptag">OOP</span><span class="ptag">Inheritance</span><span class="ptag">Polymorphism</span></div>
+                <a href="https://github.com/MohamedK14" target="_blank" class="proj-gh">⌥ GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 08 -->
+        <div class="proj-item" id="p8">
+          <div class="proj-bar" onclick="toggleP('p8')">
+            <span class="proj-idx">08</span>
+            <span class="proj-tname">Dynamic Online Store</span>
+            <span class="proj-type-tag">Frontend</span>
+            <div class="lang-row"><span class="ltag">HTML</span><span class="ltag">CSS</span><span class="ltag">JS</span></div>
+            <span class="proj-chev">▾</span>
+          </div>
+          <div class="proj-body">
+            <div class="proj-content">
+              <p class="proj-desc">Fully interactive online store — browse sections, add to cart, manage orders — with no page reloads. Built with vanilla JavaScript: DOM manipulation, event handling, and local state management with zero frameworks.</p>
+              <div class="proj-footer">
+                <div class="proj-tags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">JavaScript</span><span class="ptag">DOM API</span></div>
+                <a href="https://github.com/MohamedK14" target="_blank" class="proj-gh">⌥ GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 09 -->
+        <div class="proj-item" id="p9">
+          <div class="proj-bar" onclick="toggleP('p9')">
+            <span class="proj-idx">09</span>
+            <span class="proj-tname">Interactive Quiz Game</span>
+            <span class="proj-type-tag">Frontend</span>
+            <div class="lang-row"><span class="ltag">HTML</span><span class="ltag">JS</span></div>
+            <span class="proj-chev">▾</span>
+          </div>
+          <div class="proj-body">
+            <div class="proj-content">
+              <p class="proj-desc">Dynamic quiz web app with timed questions, live score tracking, instant feedback, and smooth transitions. Exercises component logic, UI design, and timer-based state management in pure HTML/CSS/JS.</p>
+              <div class="proj-footer">
+                <div class="proj-tags"><span class="ptag">HTML</span><span class="ptag">CSS</span><span class="ptag">JavaScript</span><span class="ptag">UX</span></div>
+                <a href="https://github.com/MohamedK14" target="_blank" class="proj-gh">⌥ GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /proj-list -->
+    </div>
+  </div>
+
+  <footer id="footer">
+    <span>© 2026 <em>Mohamed Kourouma</em></span>
+    <span>B.Sc. Computer Science · <em>University of Detroit Mercy</em></span>
+    <span>Ann Arbor, MI</span>
+  </footer>
+
+  <script>
+    let menuOpen = false;
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      document.getElementById('mobileMenu').style.display = menuOpen ? 'flex' : 'none';
+    }
+
+    function toggleP(id) {
+      const el = document.getElementById(id);
+      const wasOpen = el.classList.contains('open');
+      document.querySelectorAll('.proj-item.open').forEach(p => p.classList.remove('open'));
+      if (!wasOpen) el.classList.add('open');
+    }
+  </script>
+</body>
+</html>

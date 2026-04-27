@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Mohamed Kourouma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .ct-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: start;
+    }
+    .ct-heading {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; line-height: 1.1; margin-bottom: 14px;
+    }
+    .ct-heading em { font-style: italic; color: var(--amber); }
+    .ct-blurb {
+      font-size: 1rem; color: rgba(232,230,240,.85);
+      line-height: 1.8; margin-bottom: 24px;
+    }
+
+    .c-link {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+      padding: 11px 0; border-bottom: 1px solid var(--border);
+      transition: border-color .2s;
+    }
+    .c-link:hover { border-color: rgba(245,158,11,.3); }
+    .c-icon {
+      width: 32px; height: 32px;
+      border: 1px solid var(--border); border-radius: var(--r);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem; flex-shrink: 0;
+      transition: border-color .2s, background .2s;
+    }
+    .c-link:hover .c-icon { border-color: var(--amber); background: rgba(245,158,11,.06); }
+    .c-text {
+      font-family: var(--mono); font-size: .82rem;
+      color: var(--text); letter-spacing: .04em; transition: color .2s;
+    }
+    .c-link:hover .c-text { color: var(--amber); }
+
+    /* Form */
+    .cf { display: flex; flex-direction: column; gap: 14px; }
+    .cf label {
+      font-family: var(--mono); font-size: .72rem;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--text); display: block; margin-bottom: 6px;
+    }
+    .cf input, .cf textarea {
+      width: 100%; background: var(--bg2);
+      border: 1px solid var(--border); color: var(--text);
+      font-family: var(--sans); font-size: .88rem;
+      padding: 10px 13px; border-radius: var(--r);
+      outline: none; resize: vertical; transition: border-color .2s;
+    }
+    .cf input:focus, .cf textarea:focus { border-color: var(--amber); }
+    .cf textarea { min-height: 110px; }
+
+    @media (max-width: 800px) {
+      .ct-layout { grid-template-columns: 1fr; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="topnav">
+    <a class="nav-logo" href="index.html">Mohamed Kourouma <span>// portfolio</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="experience.html">Experience</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+
+  <div class="page-content">
+    <div class="page-wrap">
+
+      <div class="pg-label">Contact</div>
+      <h1 class="pg-title">Let's <em>Connect</em></h1>
+
+      <div class="ct-layout">
+
+        <!-- Left -->
+        <div>
+          <h2 class="ct-heading">
+            Open to Co-ops,<br/>
+            Internships &amp;<br/>
+            <em>Collaborations.</em>
+          </h2>
+          <p class="ct-blurb">
+            Whether you're a recruiter, a fellow student, a researcher, or just curious —
+            I'd love to hear from you. The best software is built by people working together.
+          </p>
+
+          <div style="margin-bottom:28px">
+            <a href="mailto:your.email@udmercy.edu" class="c-link">
+              <div class="c-icon">✉</div>
+              <div class="c-text">your.email@udmercy.edu</div>
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" class="c-link">
+              <div class="c-icon" style="font-family:var(--mono);font-size:.65rem">in</div>
+              <div class="c-text">linkedin.com/in/yourprofile</div>
+            </a>
+            <a href="https://github.com/YourUsername" target="_blank" class="c-link">
+              <div class="c-icon">⌥</div>
+              <div class="c-text">github.com/YourUsername</div>
+            </a>
+            <a href="#" class="c-link">
+              <div class="c-icon">📍</div>
+              <div class="c-text">Ann Arbor, MI — Open to Remote</div>
+            </a>
+          </div>
+
+          <div class="avail">
+            <div class="avail-dot"></div>
+            Available for Internships &amp; Co-ops
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div>
+          <div class="cf">
+            <div>
+              <label>Your Name</label>
+              <input type="text" id="cf-name" placeholder="Jane Smith"/>
+            </div>
+            <div>
+              <label>Email Address</label>
+              <input type="email" id="cf-email" placeholder="jane@company.com"/>
+            </div>
+            <div>
+              <label>Message</label>
+              <textarea id="cf-msg" placeholder="Hi Mohamed, I'd like to discuss..."></textarea>
+            </div>
+            <button
+              class="btn btn-amber"
+              onclick="handleSend(this)"
+              style="border:none;cursor:pointer;align-self:flex-start">
+              Send Message
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <span>© 2026 <em>Mohamed Kourouma</em></span>
+    <span>B.Sc. Computer Science · <em>University of Detroit Mercy</em></span>
+    <span>Ann Arbor, MI</span>
+  </footer>
+
+  <script>
+    let menuOpen = false;
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      document.getElementById('mobileMenu').style.display = menuOpen ? 'flex' : 'none';
+    }
+
+    function handleSend(btn) {
+      const n = document.getElementById('cf-name').value.trim();
+      const e = document.getElementById('cf-email').value.trim();
+      if (!n || !e) {
+        btn.textContent = '⚠ Fill in name & email first';
+        btn.style.background = 'var(--rose)';
+        setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; }, 2500);
+        return;
+      }
+      btn.textContent = '✓ Message Sent!';
+      btn.style.background = 'var(--teal)'; btn.style.color = 'var(--bg)';
+      setTimeout(() => {
+        btn.textContent = 'Send Message';
+        btn.style.background = ''; btn.style.color = '';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

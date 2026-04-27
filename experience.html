@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Experience | Mohamed Kourouma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .exp-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 26px 30px; border-radius: var(--r); margin-bottom: 14px;
+      transition: border-color .25s; position: relative; overflow: hidden;
+    }
+    .exp-card::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--amber), transparent);
+    }
+    .exp-card:hover { border-color: rgba(245,158,11,.25); }
+
+    .exp-meta {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;
+    }
+    .exp-role  { font-weight: 700; font-size: 1rem; }
+    .exp-date  {
+      font-family: var(--mono); font-size: .63rem;
+      color: var(--muted); letter-spacing: .06em;
+      background: var(--bg3); padding: 3px 9px; border-radius: 20px;
+    }
+    .exp-org {
+      font-family: var(--mono); font-size: .68rem;
+      color: var(--amber); letter-spacing: .04em; margin-bottom: 12px;
+    }
+    .exp-ul { list-style: none; }
+    .exp-ul li {
+      font-size: .87rem; color: rgba(232,230,240,.65);
+      padding-left: 16px; position: relative;
+      margin-bottom: 6px; line-height: 1.6;
+    }
+    .exp-ul li::before {
+      content: '▸'; position: absolute; left: 0; top: 4px;
+      font-size: .54rem; color: var(--amber);
+    }
+
+    .gained { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 5px; }
+    .gchip {
+      font-family: var(--mono); font-size: .57rem;
+      padding: 2px 7px;
+      border: 1px solid rgba(45,212,191,.2);
+      color: var(--teal); border-radius: 20px; letter-spacing: .05em;
+    }
+
+    .quote-box {
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 22px 26px; border-radius: var(--r); margin-top: 8px;
+    }
+    .qb-label {
+      font-family: var(--mono); font-size: .58rem;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 10px;
+    }
+    .qb-text {
+      font-family: var(--serif); font-style: italic;
+      font-size: .98rem; color: rgba(232,230,240,.8); line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="topnav">
+    <a class="nav-logo" href="index.html">Mohamed Kourouma <span>// portfolio</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="experience.html" class="active">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="experience.html" class="active">Experience</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page-content">
+    <div class="page-wrap">
+
+      <div class="pg-label">Experience</div>
+      <h1 class="pg-title">Work &amp; <em>Leadership</em></h1>
+
+      <div class="exp-card">
+        <div class="exp-meta">
+          <div class="exp-role">Peer Tutor — Math, CS, Physics &amp; Chemistry</div>
+          <div class="exp-date">2023 – Present</div>
+        </div>
+        <div class="exp-org">Washtenaw Community College Tutoring Center — Ann Arbor, MI</div>
+        <ul class="exp-ul">
+          <li>Supported students through individual and group sessions across STEM subjects, simplifying complex concepts for learners at all levels.</li>
+          <li>Built curriculum-aligned study strategies and debugging sessions for programming students struggling with C++ and data structures.</li>
+          <li>Strengthened leadership and communication — learning to meet people where they are, not just where you expect them to be.</li>
+        </ul>
+        <div class="gained">
+          <span class="gchip">Teaching</span>
+          <span class="gchip">Patience</span>
+          <span class="gchip">Leadership</span>
+          <span class="gchip">Technical Communication</span>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-meta">
+          <div class="exp-role">Caregiver</div>
+          <div class="exp-date">Jun 2022 – Present</div>
+        </div>
+        <div class="exp-org">Joak American Home Inc. · Spectrum Healthcare · INI Group LLC — Ann Arbor, MI</div>
+        <ul class="exp-ul">
+          <li>Provided compassionate care and assistance to individuals with mobility and health challenges, ensuring their safety and comfort.</li>
+          <li>Developed strong communication, patience, and teamwork through daily collaboration with healthcare staff and clients — skills I apply directly on dev teams.</li>
+          <li>Managed multiple competing responsibilities in a fast-paced environment, building the time-management discipline I rely on as a full-time student and developer.</li>
+        </ul>
+        <div class="gained">
+          <span class="gchip">Empathy</span>
+          <span class="gchip">Communication</span>
+          <span class="gchip">Time Management</span>
+          <span class="gchip">Teamwork</span>
+          <span class="gchip">Accountability</span>
+        </div>
+      </div>
+
+      <div class="quote-box">
+        <div class="qb-label">Why This Matters</div>
+        <p class="qb-text">
+          "Most CS students have only ever worked with computers. I've worked with people —
+          sick people, struggling students, teams under pressure. That changes how you think
+          about what software is actually for."
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <footer id="footer">
+    <span>© 2026 <em>Mohamed Kourouma</em></span>
+    <span>B.Sc. Computer Science · <em>University of Detroit Mercy</em></span>
+    <span>Ann Arbor, MI</span>
+  </footer>
+
+  <script>
+    let menuOpen = false;
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      document.getElementById('mobileMenu').style.display = menuOpen ? 'flex' : 'none';
+    }
+  </script>
+</body>
+</html>

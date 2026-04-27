@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Mohamed Kourouma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .ab-grid {
+      display: grid;
+      grid-template-columns: 1fr 270px;
+      gap: 60px; align-items: start;
+    }
+    .ab-text p {
+      font-size: .95rem; color: rgba(232,230,240,.75);
+      line-height: 1.85; margin-bottom: 16px;
+    }
+    .ab-text p strong { color: var(--text); }
+    .ab-text blockquote {
+      border-left: 3px solid var(--amber);
+      padding: 12px 18px; margin: 24px 0;
+      background: var(--bg2);
+      font-family: var(--serif); font-style: italic;
+      font-size: 1.02rem; color: rgba(232,230,240,.85);
+      border-radius: 0 var(--r) var(--r) 0;
+    }
+    .traits { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 24px; }
+
+    /* Photo box */
+    .photo-box {
+      width: 100%; aspect-ratio: 3/4;
+      background: var(--bg2); border: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative; overflow: hidden; margin-bottom: 20px;
+    }
+    .photo-box::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(245,158,11,.07) 0%, transparent 60%);
+    }
+    .photo-initials {
+      font-family: var(--serif); font-size: 4.5rem; font-weight: 900;
+      color: rgba(245,158,11,.12); letter-spacing: -.05em;
+    }
+    .photo-note {
+      position: absolute; bottom: 12px;
+      font-family: var(--mono); font-size: .56rem;
+      color: var(--muted); letter-spacing: .1em;
+      text-align: center; line-height: 1.5;
+    }
+
+    /* Info card */
+    .info-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 18px; border-radius: var(--r); margin-bottom: 12px;
+    }
+    .ir {
+      display: flex; gap: 8px;
+      font-family: var(--mono); font-size: .63rem;
+      color: var(--muted); letter-spacing: .04em;
+      margin-bottom: 7px; line-height: 1.4;
+    }
+    .ir:last-child { margin-bottom: 0; }
+    .ir .k { color: var(--amber); min-width: 76px; }
+
+    /* Beyond grid */
+    .beyond-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 10px; margin-top: 36px;
+    }
+    .beyond-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      padding: 18px 14px; text-align: center;
+      border-radius: var(--r);
+      transition: border-color .25s, background .25s;
+    }
+    .beyond-card:hover { border-color: rgba(245,158,11,.3); background: var(--bg3); }
+    .bc-icon  { font-size: 1.5rem; margin-bottom: 8px; }
+    .bc-label {
+      font-family: var(--mono); font-size: .6rem;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+    }
+
+    @media (max-width: 800px) {
+      .ab-grid { grid-template-columns: 1fr; }
+      .photo-box { max-height: 240px; aspect-ratio: auto; }
+      .beyond-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .beyond-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="topnav">
+    <a class="nav-logo" href="index.html">Mohamed Kourouma <span>// portfolio</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="experience.html">Experience</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="page-content">
+    <div class="page-wrap">
+
+      <div class="pg-label">About Me</div>
+      <h1 class="pg-title">More Than a <em>Resume</em></h1>
+
+      <div class="ab-grid">
+
+        <!-- Left: text -->
+        <div class="ab-text">
+          <p>My name is <strong>Mohamed Kourouma</strong>. I was born and raised in
+          <strong>Guinea, West Africa</strong>, and came to Michigan in pursuit of
+          education and opportunity. I'm currently studying Computer Science at the
+          <strong>University of Detroit Mercy</strong>, building on my pre-engineering
+          transfer degree from Washtenaw Community College.</p>
+
+          <blockquote>
+            "My goal is to gain enough experience and knowledge to one day create
+            products that will make people's lives better."
+          </blockquote>
+
+          <p>I initially started as <strong>self-taught</strong> — using platforms like
+          FreeCodeCamp, Codecademy, and DataCamp to build a foundation before my formal
+          coursework, and I continue to push beyond what the classroom alone can offer. I don't wait to be handed a problem; I find interesting ones
+          and start building. That mindset led me to wire up an RTL-SDR radio receiver
+          to track live aircraft overhead, and to implement an AI that plays Connect
+          Four with alpha-beta pruning.</p>
+
+          <p>Before focusing on CS, I spent time in service-oriented work that shaped how I see technology — not as an end in itself, but as a tool to <em>genuinely help people.</em></p>
+
+          <p>I also worked as a <strong>STEM tutor at WCC</strong>, which gave me one
+          of the most undervalued skills in tech: breaking down complex ideas clearly
+          and patiently for people who don't share your background yet. Every great
+          engineer needs that.</p>
+
+          <div class="traits">
+            <span class="chip ch-a">Self-Motivated</span>
+            <span class="chip ch-t">Team Player</span>
+            <span class="chip ch-r">Empathetic</span>
+            <span class="chip ch-a">Curiosity-Driven</span>
+            <span class="chip ch-t">Patient Teacher</span>
+            <span class="chip ch-r">Mission-Oriented</span>
+            <span class="chip ch-a">Persistent</span>
+          </div>
+
+          <div style="margin-top:28px;padding:18px 22px;background:var(--bg2);border-left:3px solid var(--teal);border-radius:0 var(--r) var(--r) 0;">
+            <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;">Research Interests</div>
+            <p style="font-size:.88rem;color:rgba(232,230,240,.72);line-height:1.75;margin:0;">
+              One of my goals at UDM is to get involved in <strong>undergraduate research</strong> — particularly at the intersection of AI, real-time systems, and data engineering. My aircraft tracking project already lives in that space, and I'm actively looking for opportunities to take that kind of work further alongside faculty.
+            </p>
+          </div>
+
+          <h2 style="font-family:var(--serif);font-size:1.25rem;font-weight:700;margin:36px 0 14px">
+            Beyond the <em style="color:var(--amber)">Code</em>
+          </h2>
+          <div class="beyond-grid">
+            <div class="beyond-card"><div class="bc-icon">🌍</div><div class="bc-label">World Citizen</div></div>
+            <div class="beyond-card"><div class="bc-icon">📡</div><div class="bc-label">Radio Tinkerer</div></div>
+            <div class="beyond-card"><div class="bc-icon">♟️</div><div class="bc-label">Strategy &amp; Games</div></div>
+            <div class="beyond-card"><div class="bc-icon">📚</div><div class="bc-label">Lifelong Learner</div></div>
+            <div class="beyond-card"><div class="bc-icon">🤝</div><div class="bc-label">Community First</div></div>
+            <div class="beyond-card"><div class="bc-icon">🔬</div><div class="bc-label">Future Researcher</div></div>
+          </div>
+        </div>
+
+        <!-- Right: sidebar -->
+        <div>
+          <div class="photo-box">
+            <span class="photo-initials">MK</span>
+            <span class="photo-note">[ Your photo goes here ]<br/>Replace with &lt;img&gt; tag</span>
+          </div>
+          <div class="info-card">
+            <div class="ir"><span class="k">Name</span> Mohamed Kourouma</div>
+            <div class="ir"><span class="k">Origin</span> Guinea, West Africa</div>
+            <div class="ir"><span class="k">Location</span> Ann Arbor, MI</div>
+            <div class="ir"><span class="k">University</span> UDM Detroit</div>
+            <div class="ir"><span class="k">Degree</span> B.Sc. CS</div>
+            <div class="ir"><span class="k">Grad</span> May 2028</div>
+            <div class="ir"><span class="k">Status</span><span style="color:var(--teal)">Open to Internship ✓</span></div>
+          </div>
+          <div class="avail"><div class="avail-dot"></div>Open to Co-ops &amp; Internships</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <span>© 2026 <em>Mohamed Kourouma</em></span>
+    <span>B.Sc. Computer Science · <em>University of Detroit Mercy</em></span>
+    <span>Ann Arbor, MI</span>
+  </footer>
+
+  <script>
+    let menuOpen = false;
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      document.getElementById('mobileMenu').style.display = menuOpen ? 'flex' : 'none';
+    }
+  </script>
+</body>
+</html>
